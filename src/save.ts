@@ -6,6 +6,8 @@ import * as utils from "./utils/actionUtils";
 
 async function run(): Promise<void> {
     try {
+        process.env["ACTIONS_CACHE_URL"] = process.env["ACTIONS_CACHE_URL_OVERRIDE"];
+
         if (!utils.isValidEvent()) {
             utils.logWarning(
                 `Event Validation Error: The event type ${

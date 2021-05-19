@@ -6828,6 +6828,7 @@ const utils = __importStar(__webpack_require__(443));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            process.env["ACTIONS_CACHE_URL"] = process.env["ACTIONS_CACHE_URL_OVERRIDE"];
             // Validate inputs, this can cause task failure
             if (!utils.isValidEvent()) {
                 utils.logWarning(`Event Validation Error: The event type ${process.env[constants_1.Events.Key]} is not supported because it's not tied to a branch or tag ref.`);

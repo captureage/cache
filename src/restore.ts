@@ -6,6 +6,8 @@ import * as utils from "./utils/actionUtils";
 
 async function run(): Promise<void> {
     try {
+        process.env["ACTIONS_CACHE_URL"] = process.env["ACTIONS_CACHE_URL_OVERRIDE"];
+
         // Validate inputs, this can cause task failure
         if (!utils.isValidEvent()) {
             utils.logWarning(
