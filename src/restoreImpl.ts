@@ -9,6 +9,10 @@ async function restoreImpl(
     stateProvider: IStateProvider
 ): Promise<string | undefined> {
     try {
+        if (process.env["ACTIONS_CACHE_URL_OVERRIDE"]) {
+            process.env["ACTIONS_CACHE_URL"] =
+                process.env["ACTIONS_CACHE_URL_OVERRIDE"];
+        }
         if (!utils.isCacheFeatureAvailable()) {
             core.setOutput(Outputs.CacheHit, "false");
             return;

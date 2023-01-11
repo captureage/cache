@@ -50479,6 +50479,10 @@ const utils = __importStar(__webpack_require__(360));
 function restoreImpl(stateProvider) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            if (process.env["ACTIONS_CACHE_URL_OVERRIDE"]) {
+                process.env["ACTIONS_CACHE_URL"] =
+                    process.env["ACTIONS_CACHE_URL_OVERRIDE"];
+            }
             if (!utils.isCacheFeatureAvailable()) {
                 core.setOutput(constants_1.Outputs.CacheHit, "false");
                 return;
