@@ -59397,6 +59397,10 @@ function saveImpl(stateProvider) {
     return __awaiter(this, void 0, void 0, function* () {
         let cacheId = -1;
         try {
+            if (process.env["ACTIONS_CACHE_URL_OVERRIDE"]) {
+                process.env["ACTIONS_CACHE_URL"] =
+                    process.env["ACTIONS_CACHE_URL_OVERRIDE"];
+            }
             if (!utils.isCacheFeatureAvailable()) {
                 return;
             }

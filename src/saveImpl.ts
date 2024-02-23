@@ -19,6 +19,10 @@ export async function saveImpl(
 ): Promise<number | void> {
     let cacheId = -1;
     try {
+        if (process.env["ACTIONS_CACHE_URL_OVERRIDE"]) {
+            process.env["ACTIONS_CACHE_URL"] =
+                process.env["ACTIONS_CACHE_URL_OVERRIDE"];
+        }
         if (!utils.isCacheFeatureAvailable()) {
             return;
         }
